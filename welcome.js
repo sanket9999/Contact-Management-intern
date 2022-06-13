@@ -88,6 +88,12 @@ function signup2(){
                 malingzip: malingzip,
                 malingcountry: malingcountry        
             },{ merge: true })
+            .then(() => {
+                db.collection("Master-Account").doc(create_UUID()).set({
+                    uid: uid,
+                    accountsitesearch: accountsitesearch
+                },{ merge: true })
+            })
             .then(() => {alert("Submitted Successfully"); })
             .then(() => {
                 console.log('User added!!!!');
