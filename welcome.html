@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wecome Page</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/slim-select/1.27.1/slimselect.min.css" rel="stylesheet"></link>
+
+    <link rel="stylesheet" href="./index.css" />
+    <link
+    href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+    rel="stylesheet"
+    />
+    <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.5.0/mdb.min.css"
+    rel="stylesheet"
+    />
+    <script
+    type="text/javascript"
+    src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.5.0/mdb.min.js"
+    ></script>
+</head>
+<body >
+     <div style="margin:100px">
+        <span id="user" class="message">Hello, < email-id ></Email-id></span><br>
+        <div class="success"><span>Welcome to auth starter, You are successfully loged in!!!</span></div><br/>
+        <div class="container mt-5">
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">New Contact</button>
+            
+            <div class="modal" id="myModal">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" class="center">Contact Us</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form onsubmit="login()" id="loginForm" class="card-body px-5 py-4">
+                                <small><span id="error" style="color: red"></span></small> 
+                                <div class="mb-3">
+                                    <h2><p>Contact Information </p></h2>
+                                </div>
+                                <div class="mb-3">
+                                    <label onclick="myFunction()" class="form-label required">Salutation</label>
+                                        <select name="Salutation" id="salutation">
+                                        <option value="--None--">--None--</option>
+                                        <option value="Mr.">Mr.</option>
+                                        <option value="Mrs.">Mrs.</option>
+                                        <option value="Dr.">Dr.</option>
+                                        </select>&emsp;&emsp;
+                                <label class="form-label required">Contact Owner</label>
+                                <span id="user2" class="message">Admin, Hello < email-id ></Email-id></span><br>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label required">First Name</label>
+                                    <input id="fname" type="text" class="form-control">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label required">Middle Name</label>
+                                    <input id="mname" type="text" class="form-control">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label required">last Name</label>
+                                    <input id="lname" type="text" class="form-control">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label required" >Suffix</label>
+                                    <input id="suffix" type="text" class="form-control">
+                                </div>
+                                <div class="mb-3">
+                                    
+                                    <label class="form-label required" class="placeholder">Account Name</label><br></br>
+                                    <select id="accountsitesearch">
+                                        <option value="Account 1">Account 1</option>
+                                        <option value="Account 2">Account 2</option>
+                                        <option value="Account 3">Account 3</option>
+                                    </select>
+                                    <br></br>
+                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#secondModal">New Account</button><br></br>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label required" class="placeholder">Reports To</label><br></br>
+                                    <select id="Reportssitesearch">
+                                        <option value="Reports 1">Reports 1</option>
+                                        <option value="Reports 2">Reports 2</option>
+                                        <option value="Reports 3">Reports 3</option>
+                                    </select><br></br>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label required" >Title</label>
+                                    <input id="title" type="text" class="form-control">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label required" >Department</label>
+                                    <input id="department" type="text" class="form-control">
+                                </div>
+                                <!-- <div class="mb-3">
+                                    <label class="form-label required" >Title</label>
+                                    <input id="Title" type="text" class="form-control">
+                                </div> -->
+                                <div class="mb-3">
+                                    <label class="form-label required" >Email</label>
+                                    <input id="email" type="text" class="form-control">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label required" >Fax</label>
+                                    <input id="fax" type="text" class="form-control">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label required" >Phone</label>
+                                    <input id="phone" type="text" class="form-control">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label required" >Mobile</label>
+                                    <input id="Mobile" type="text" class="form-control">
+                                </div>
+                                <div class="mb-3">
+                                    <h2><p>Address Information </p></h2>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label required" class="placeholder">Mailing</label><br></br>
+                                    <select id="Mailingsitesearch">
+                                        <option value="Mailing 1">Mailing 1</option>
+                                        <option value="Mailing 2">Mailing 2</option>
+                                        <option value="Mailing 3">Mailing 3</option>
+                                    </select><br></br>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label required" >Mailing Steet</label>
+                                    <input id="malingstreet" type="text" class="form-control">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label required" >Mailing City</label>
+                                    <input id="malingcity" type="text" class="form-control">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label required" >Mailing State/Province</label>
+                                    <input id="malingstate" type="text" class="form-control">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label required" >Mailing Zip/Postal Code</label>
+                                    <input id="malingzip" type="text" class="form-control">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label required" >Mailing Country</label>
+                                    <input id="malingcountry" type="text" class="form-control">
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" onclick="signup2()" id="sighup2" class="btn btn-primary" ata-bs-toggle="myModal" data-mdb-dismiss="myModal">Submit</button>
+                            <button type="submit" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
+                            <a href="#" onclick="forgotPass()">Forgot Password</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal" id="secondModal">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header alert alert-success">
+                            <h5 class="modal-title">New Account</h5>
+                            <button class="btn-close" type="button" data-bs-dismiss="modal"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <div class="mb-3">
+                                    <h2><p>Account Information </p></h2>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label required" class="placeholder">Account Name</label><br></br>
+                                    <select id="accountsitesearch1">
+                                        <option value="Account 1">Account 1</option>
+                                        <option value="Account 2">Account 2</option>
+                                        <option value="Account 3">Account 3</option>
+                                    </select><br></br>
+                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">New Contact</button><br></br>                           
+                                <label class="form-label required">Contact Owner</label>
+                                <span id="user3" class="message">Admin, Hello < email-id ></Email-id></span><br>
+                                </div>
+                                <div class="mb-3">
+                                    <label onclick="myFunction()" class="form-label required"> Type</label>
+                                        <select name="type" id="type1">
+                                        <option value="--None--">--None--</option>
+                                        <option value="Mr.">Mr.</option>
+                                        <option value="Mrs.">Mrs.</option>
+                                        <option value="Dr.">Dr.</option>
+                                        </select>&emsp;&emsp;
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label required" class="placeholder">Parent Account</label><br></br>
+                                    <select id="Parentsitesearch">
+                                        <option value="Parent Account 1">Parent Account 1</option>
+                                        <option value="Parent Account 2">Parent Account 2</option>
+                                        <option value="Parent Account 3">Parent Account 3</option>
+                                    </select><br></br>
+                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">New Contact</button><br></br>                           
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label required">Website</label>
+                                    <input id="website" type="text" class="form-control">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label required">Phone</label>
+                                    <input id="phone1" type="text" class="form-control">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label required">Description</label>
+                                    <input id="description" type="text" class="form-control">
+                                </div>
+    
+                                <div class="mb-3">
+                                    <label onclick="myFunction()" class="form-label required"> Industry</label>
+                                        <select name="industry" id="industry">
+                                        <option value="--None--">--None--</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        </select>&emsp;&emsp;
+                                </div>
+                                <div class="mb-3">
+                                    <h2><p>Account Information </p></h2>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label required" class="placeholder">Billing Address</label><br></br>
+                                    <select id="Billingsitesearch">
+                                        <option value="Billing Address 1">Billing Address 1</option>
+                                        <option value="Billing Address 2">Billing Address 2</option>
+                                        <option value="Billing Address 3">Billing Address 3</option>
+                                    </select><br></br>
+                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">New Contact</button>                           
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label required" >Billing street</label>
+                                    <input id="Billingstreet" type="text" class="form-control">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label required" >Billing city</label>
+                                    <input id="Billingcity" type="text" class="form-control">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label required" >Billing State/Province</label>
+                                    <input id="BillingState" type="text" class="form-control">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label required" >Billing Zip/Postal Code</label>
+                                    <input id="BillingZip" type="text" class="form-control">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label required" >Billing Country</label>
+                                    <input id="BillingCountry" type="text" class="form-control">
+                                </div>
+    
+                                <div class="mb-3">
+                                    <label class="form-label required" class="placeholder">Shipping Address</label><br></br>
+                                    <select id="Shippingsitesearch">
+                                        <option value="Shipping Address 1">Shipping Address 1</option>
+                                        <option value="Shipping Address 2">Shipping Address 2</option>
+                                        <option value="Shipping Address 3">Shipping Address 3</option>
+                                    </select><br></br>
+                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">New Contact</button>                           
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label required" >Shipping street</label>
+                                    <input id="Shippingstreet" type="text" class="form-control">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label required" >Shipping city</label>
+                                    <input id="Shippingcity" type="text" class="form-control">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label required" >Shipping State/Province</label>
+                                    <input id="ShippingState" type="text" class="form-control">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label required" >Shipping Zip/Postal Code</label>
+                                    <input id="ShippingZip" type="text" class="form-control">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label required" >Shipping Country</label>
+                                    <input id="ShippingCountry" type="text" class="form-control">
+                                </div>
+    
+    
+    
+                            </form>
+    
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" onclick="signup3()" id="sighup3" class="btn btn-primary" ata-bs-toggle="modal" data-bs-target="#myModal" data-mdb-dismiss="secondModal" >Submit</button>
+                            <!-- <button type="submit" class="btn btn-primary" ata-bs-toggle="modal" data-bs-target="#myModal" >Submit</button> -->
+                            <button type="submit" class="btn btn-danger" data-bs-dismiss="modal" >Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br></br>
+        <button class="btn btn-danger" onclick="logout()">Logout</button>
+    </div> 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slim-select/1.27.1/slimselect.min.js"></script>
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+        https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-firestore.js"></script>
+
+    <!-- <script>db.settings({ timestampsInSnapshots: true });</script> -->
+
+    <script src="firebase.js"></script>
+    <script src="welcome.js"></script>
+    <script src="slimselect.js"></script>
+</body>
+</html>
