@@ -86,14 +86,14 @@ function signup2(){
                 malingcity: malingcity,
                 malingstate: malingstate,
                 malingzip: malingzip,
-                malingcountry: malingcountry        
+                malingcountry: malingcountry
             },{ merge: true })
             .then(() => {
                 db.collection("Master-Account").doc(create_UUID()).set({
                     uid: uid,
-                    accountsitesearch: accountsitesearch
+                    accountsitesearch: accountsitesearch                      
                 },{ merge: true })
-            })
+            }) 
             .then(() => {alert("Submitted Successfully"); })
             .then(() => {
                 console.log('User added!!!!');
@@ -103,7 +103,7 @@ function signup2(){
         
           .catch((error) => {
               document.getElementById("error").innerHTML = error.message
-              console.log(error);
+              console.log(error)
           })
                   
           // ...
@@ -181,3 +181,12 @@ function signup3(){
       });
 }
 
+function accountname(accountsitesearch, uid){
+    var option = document.createElement("option");
+    option.value = accountsitesearch;
+    option.setAttribute(uid);
+    option.innerHTML = accountsitesearch;
+    if(document.getElementById("addGuestsInput")){
+        document.getElementById("addGuestsInput").appendChild(option);
+    }
+}
