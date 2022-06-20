@@ -2,7 +2,6 @@ var db=firebase.firestore();
 db.settings({ timestampsInSnapshots: true });
 
 
-
 let submitButton = document.getElementById("signup2","signup3");
 
 firebase.auth().onAuthStateChanged((user)=>{
