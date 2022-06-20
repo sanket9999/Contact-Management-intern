@@ -31,7 +31,6 @@ function signUp(){
         document.getElementById("error").innerHTML = error.message
         console.log(error);
     })
-            clearForm()
     }
 
 function login(){
@@ -44,9 +43,6 @@ function login(){
         })
 }
     
-function clearForm() {
-        document.getElementById("clearFrom").reset();
-}
 
 function forgotPass(){
     const email = document.getElementById("email").value

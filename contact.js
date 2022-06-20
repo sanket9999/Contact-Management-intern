@@ -26,9 +26,6 @@ document.getElementById("loginForm").addEventListener("submit",(event)=>{
 })
 
 
-function clearForm() {
-    document.getElementById("clearFrom").reset();
-}
 // ######################################################################################################
 // to create random UUID
 function create_UUID() { 
@@ -96,7 +93,6 @@ function signup2(){
             .then(() => {alert("Submitted Successfully"); })
             .then(() => {
                 console.log('User added!!!!');
-                clearForm()
               })
           
         
@@ -164,7 +160,6 @@ function signup3(){
             .then(() => {alert("Submitted Successfully"); })
             .then(() => {
                 console.log('User added!!!!');
-                clearForm()
               })
           
         
