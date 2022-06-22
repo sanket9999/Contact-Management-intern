@@ -13,9 +13,33 @@ firebase.auth().onAuthStateChanged((user)=>{
         document.getElementById("user3").innerHTML = "Hello, "+user.email
         uid = user.uid;
         console.log(uid); 
-
+        db.collection("Application").doc(user.uid).collection("Account").get().then((querySnapshot) => {
+            querySnapshot.forEach((doc) => {
+                console.log( "Account Name => ", doc.data().accountsitesearch1);
+                accountname(doc.data().accountsitesearch1);
+                parentaccountname(doc.data().accountsitesearch1);
+            });
+        });
     }
 })
+
+function accountname(accountsitesearch1){
+    var option = document.createElement("option");
+    option.value = accountsitesearch1;
+    option.innerHTML = accountsitesearch1;
+    if(document.getElementById("accountsitesearch")){
+        document.getElementById("accountsitesearch").appendChild(option);
+    }
+}
+
+function parentaccountname(accountsitesearch1){
+    var option = document.createElement("option");
+    option.value = accountsitesearch1;
+    option.innerHTML = accountsitesearch1;
+    if(document.getElementById("Parentsitesearch")){
+        document.getElementById("Parentsitesearch").appendChild(option);
+    }
+}
 
 function logout(){
     firebase.auth().signOut()
@@ -133,8 +157,7 @@ function signup3(){
             const ShippingState = document.getElementById("ShippingState").value
             const ShippingZip = document.getElementById("ShippingZip").value
             const ShippingCountry = document.getElementById("ShippingCountry").value
-            db.collection("Application").doc(user.uid).collection("Account").doc(create_UUID()).set({
-                // New Account
+            db.collection("Application").doc(user.uid).collection("Account").doc(create_UUID()).set({                // New Account
                 uid: uid,
                 accountsitesearch1: accountsitesearch1,
                 type1: type1,
@@ -175,12 +198,3 @@ function signup3(){
       });
 }
 
-function accountname(accountsitesearch, uid){
-    var option = document.createElement("option");
-    option.value = accountsitesearch;
-    option.setAttribute(uid);
-    option.innerHTML = accountsitesearch;
-    if(document.getElementById("addGuestsInput")){
-        document.getElementById("addGuestsInput").appendChild(option);
-    }
-}

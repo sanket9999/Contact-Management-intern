@@ -15,10 +15,6 @@ new SlimSelect({
   })
 
 new SlimSelect({
-    select: '#accountsitesearch1'
-  })
-
-new SlimSelect({
     select: '#Billingsitesearch'
   })
   

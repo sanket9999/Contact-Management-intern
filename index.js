@@ -37,7 +37,9 @@ function login(){
         const email = document.getElementById("email").value
         const password = document.getElementById("password").value
         firebase.auth().signInWithEmailAndPassword(email, password)
-        location.replace("contact.html")
+        .then(() => {
+        location.replace("contact.html");
+        })
         .catch((error)=>{
             document.getElementById("error").innerHTML = error.message
         })
