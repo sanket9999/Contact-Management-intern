@@ -1,6 +1,7 @@
 var db=firebase.firestore();
 db.settings({ timestampsInSnapshots: true });
-
+// var contactno=0;
+// var tbody = document.getElementById('tbody1');
 
 let submitButton = document.getElementById("signup2","signup3");
 
@@ -18,6 +19,7 @@ firebase.auth().onAuthStateChanged((user)=>{
                 console.log( "Account Name => ", doc.data().accountsitesearch1);
                 accountname(doc.data().accountsitesearch1);
                 parentaccountname(doc.data().accountsitesearch1);
+             //GetAllDataOnce();
             });
         });
     }
@@ -40,6 +42,67 @@ function parentaccountname(accountsitesearch1){
         document.getElementById("Parentsitesearch").appendChild(option);
     }
 }
+
+// function GetAllDataOnce(){
+//     db.collection("Application").doc(user.uid).collection("Account").get()
+//     .then((querySnapshot)=>{
+//         var contact = [] ;
+//         querySnapshot.forEach(doc => {
+//             contact.puch(doc.data());
+//         });
+//         AddAllItrmsToTheTable(contact);
+//         // console.log(querySnapshot); 
+//         // console.log(contact); 
+//     })
+// }
+// function GetAllDataRealtime(){
+//     db.collection("Application").doc(user.uid).collection("Account").onSnapshot((querySnapshot)=>{
+//         var contact = [] ;
+//         querySnapshot.forEach(doc => {
+//             contact.puch(doc.data());
+//         });
+//         AddAllItrmsToTheTable(contact);
+//         // console.log(querySnapshot); 
+//         // console.log(contact); 
+//     })
+// }
+
+// function AddItemToTable(accountsitesearch, phone, email, user2){
+//     // var contactno=0;
+//     // var tbody = document.getElementById('tbody1');
+
+//     var trow = document.createElement('tr');
+//     var td1 = document.createElement('td');
+//     var td2 = document.createElement('td');
+//     var td3 = document.createElement('td');
+//     var td4 = document.createElement('td');
+//     var td5 = document.createElement('td');
+
+//     td1.innerHTML = ++contactno;
+//     td2.innerHTML = accountsitesearch;
+//     td3.innerHTML = phone;
+//     td4.innerHTML = email;
+//     td5.innerHTML = user2;
+
+//     trow.appendChild(td1);
+//     trow.appendChild(td2);
+//     trow.appendChild(td3);
+//     trow.appendChild(td4);
+//     trow.appendChild(td5);
+
+//     tbody.appendChild(trow);
+
+// }
+
+// function AddAllItrmsToTheTable(contactlist){
+//     // contactno=0;
+//     // var tbody = document.getElementById('tbody1');
+//     tbody.innerHTML="";
+//     contactlist.forEach(element => {
+//         AddItemToTable(element.accountsitesearch ,element.phone, element.email, element.user2, );
+//     })
+// }
+// window.onload = GetAllDataRealtime;
 
 function logout(){
     firebase.auth().signOut()
