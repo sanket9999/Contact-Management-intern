@@ -1,7 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@700&display=swap');
+.modal{
+    overflow-y: auto !important;
+}
+
 .modal-header {
-    background: #ff8c00;
-    color: #fff;
+    background: #004cff;
+    color: rgb(255, 251, 0);
 }
 .model-body {
     padding-top: 50px;
@@ -15,7 +19,7 @@
 }
 
 body{
-    background: #F8F8F8;
+    background: #000000;
 }
 
 *, *::before, *::after{
@@ -68,3 +72,5 @@ body{
     color: seagreen;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+
+

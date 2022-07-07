@@ -21,3 +21,4 @@ new SlimSelect({
 new SlimSelect({
     select: '#Shippingsitesearch'
   })
+

@@ -30,10 +30,10 @@
             <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#thirdModal">View Contact</button><br></br>
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#fourthModal">View Account</button><br></br>
             <div class="modal" id="myModal">
-                <div class="modal-dialog">
+                <div class="modal-dialog modal-lg">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" class="center">Contact Us</h5>
+                            <h5 class="modal-title" class="center">New Contact</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                         </div>
                         <div class="modal-body">
@@ -102,7 +102,7 @@
                                 </div> -->
                                 <div class="mb-3">
                                     <label class="form-label required" >Email</label>
-                                    <input id="email" type="text" class="form-control">
+                                    <input id="email1" type="text" class="form-control">
                                 </div>
                                 <div class="mb-3">
                                     <label class="form-label required" >Fax</label>
@@ -156,12 +156,13 @@
                         </div>
                     </div>
                 </div>
+                <style> .modal { overflow: auto !important; } </style>
             </div>
             <div class="modal" id="secondModal">
-                <div class="modal-dialog">
+                <div class="modal-dialog modal-lg">
                     <div class="modal-content">
-                        <div class="modal-header alert alert-success">
-                            <h5 class="modal-title">New Account</h5>
+                        <div class="modal-header">
+                            <h5 class="modal-title" class="center" >New Account</h5>
                             <button class="btn-close" type="button" data-bs-dismiss="modal"></button>
                         </div>
                         <div class="modal-body">
@@ -290,9 +291,10 @@
                         </div>
                     </div>
                 </div>
+                <style> .modal { overflow: auto !important; } </style>
             </div>
             <div class="modal" id="thirdModal">
-                <div class="modal-dialog">
+                <div class="modal-dialog modal-xl">
                     <div  class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title" class="center">View Contact</h5>
@@ -302,6 +304,14 @@
                             <table class="table">
                                 <thead>
                                     <span id="user8" class="message"> < email-id ></Email-id></span><br>
+                                    <div class="mb-3">                                    
+                                        <label class="placeholder">Contact Name</label><br></br>
+                                        <select id="cContact">
+                                            <option value="Contact_1">All Contact</option>
+                                            <option value="Contact_2">View Contact </option>
+                                          </select>
+                                        <br></br>
+                                    </div>
                                     <th>Sr no Contact</th>
                                     <th>Account</th>
                                     <th>Phone</th>
@@ -318,7 +328,7 @@
                 </div>
             </div>
             <div class="modal" id="fourthModal">
-                <div class="modal-dialog">
+                <div class="modal-dialog modal-xl">
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title" class="center">View Account</h5>
@@ -328,6 +338,14 @@
                             <table class="table">
                                 <thead>
                                     <span id="user7" class="message"> < email-id ></Email-id></span><br>
+                                    <div class="mb-3">                                    
+                                        <label class="placeholder">Account Name</label><br></br>
+                                        <select id="cAccount">
+                                            <option value="Account_1">All Account</option>
+                                            <option value="Account_2">View Account </option>
+                                          </select>
+                                        <br></br>
+                                    </div>
                                     <th>Sr no Contact</th>
                                     <th>Account</th>
                                     <th>Phone</th>
@@ -351,6 +369,9 @@
         <br></br>
         <button class="btn btn-danger" onclick="logout()">Logout</button>
     </div> 
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slim-select/1.27.1/slimselect.min.js"></script>
@@ -368,8 +389,6 @@
 
     <script src="firebase.js"></script>
     <script src="contact.js"></script>
-    <script src="viewcontact.js"></script>
-    <script src="viewaccount.js"></script>
     <script src="slimselect.js"></script>
 </body>
 </html>

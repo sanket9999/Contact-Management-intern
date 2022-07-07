@@ -1,7 +1,7 @@
 var db=firebase.firestore();
 db.settings({ timestampsInSnapshots: true });
-// var contactno=0;
-// var tbody = document.getElementById('tbody1');
+var tbody1 = document.getElementById('tbody1');
+var tbody2 = document.getElementById('tbody2');
 
 let submitButton = document.getElementById("signup2","signup3");
 
@@ -12,16 +12,95 @@ firebase.auth().onAuthStateChanged((user)=>{
         document.getElementById("user").innerHTML = "Hello, "+user.email
         document.getElementById("user2").innerHTML = "Hello, "+user.email
         document.getElementById("user3").innerHTML = "Hello, "+user.email
+        document.getElementById("user7").innerHTML = "Hello, " + user.email
+        document.getElementById("user8").innerHTML = "Hello, " + user.email
         uid = user.uid;
+        email = user.email;
+        console.log(email);
         console.log(uid); 
         db.collection("Application").doc(user.uid).collection("Account").get().then((querySnapshot) => {
             querySnapshot.forEach((doc) => {
                 console.log( "Account Name => ", doc.data().accountsitesearch1);
                 accountname(doc.data().accountsitesearch1);
                 parentaccountname(doc.data().accountsitesearch1);
-             //GetAllDataOnce();
             });
         });
+
+        document.getElementById('cContact').addEventListener('change', (e)=>{
+            const selectValue = document.getElementById('cContact').value;
+            if(selectValue === 'Contact_1' || selectValue === '' )
+            {
+                db.collection("Application").doc(user.uid).collection("ORG").get().then((querySnapshot) => {
+                    tbody1.innerHTML = "";
+                    var serialNumber = 0;
+                    querySnapshot.forEach((doc) => {
+                        serialNumber++;
+                        // console.log(doc.id, "Contact Name => ", doc.data());
+                        AddAllItemsToTheTable(serialNumber, doc.id, doc.data());
+                    });
+                });
+            }
+            else(selectValue === 'Contact_2')
+            {
+                db.collection("Application").doc(user.uid).collection("ORG").where("uid", "==", user.uid)
+                .get()
+                .then((querySnapshot) => {
+                    querySnapshot.forEach((doc) => {
+                        tbody1.innerHTML = "";
+                        var serialNumber = 0;
+                        querySnapshot.forEach((doc) => {
+                            serialNumber++;
+                            // console.log(doc.id, "Contact Name => ", doc.data());
+                            AddAllItemsToTheTable(serialNumber, doc.id, doc.data());
+                        });
+                        console.log(doc.id, " => ", doc.data());
+                    });
+                })
+                .catch((error) => {
+                    console.log("Error getting documents: ", error);
+                });
+            }
+           
+        })
+
+        document.getElementById('cAccount').addEventListener('change', (e)=>{
+            const selectValue = document.getElementById('cAccount').value;
+            if(selectValue === 'Account_1' || selectValue === '' )
+            {
+            // All view account 
+            db.collection("Application").doc(user.uid).collection("Account").get().then((querySnapshot) => {
+                tbody2.innerHTML = "";
+                var serialNumber = 0;
+                querySnapshot.forEach((doc) => {
+                    serialNumber++;
+                    // console.log(doc.id, "Account Name => ", doc.data());
+                    AddAllItemsToTheTable2(serialNumber, doc.id, doc.data());
+                });
+            }); 
+            }else(selectValue === 'Account_2')
+            {
+            // view account
+            db.collection("Application").doc(user.uid).collection("Account").where("uid", "==", user.uid)
+            .get()
+            .then((querySnapshot) => {
+                querySnapshot.forEach((doc) => {
+                    tbody2.innerHTML = "";
+                    var serialNumber = 0;
+                    querySnapshot.forEach((doc) => {
+                        serialNumber++;
+                        // console.log(doc.id, "Account Name => ", doc.data());
+                        AddAllItemsToTheTable2(serialNumber, doc.id, doc.data());
+                    });
+                    // doc.data() is never undefined for query doc snapshots
+                    console.log(doc.id, " => ", doc.data());
+                });
+            })
+            .catch((error) => {
+                console.log("Error getting documents: ", error);
+            });
+            }
+           
+        })
     }
 })
 
@@ -42,67 +121,6 @@ function parentaccountname(accountsitesearch1){
         document.getElementById("Parentsitesearch").appendChild(option);
     }
 }
-
-// function GetAllDataOnce(){
-//     db.collection("Application").doc(user.uid).collection("Account").get()
-//     .then((querySnapshot)=>{
-//         var contact = [] ;
-//         querySnapshot.forEach(doc => {
-//             contact.puch(doc.data());
-//         });
-//         AddAllItrmsToTheTable(contact);
-//         // console.log(querySnapshot); 
-//         // console.log(contact); 
-//     })
-// }
-// function GetAllDataRealtime(){
-//     db.collection("Application").doc(user.uid).collection("Account").onSnapshot((querySnapshot)=>{
-//         var contact = [] ;
-//         querySnapshot.forEach(doc => {
-//             contact.puch(doc.data());
-//         });
-//         AddAllItrmsToTheTable(contact);
-//         // console.log(querySnapshot); 
-//         // console.log(contact); 
-//     })
-// }
-
-// function AddItemToTable(accountsitesearch, phone, email, user2){
-//     // var contactno=0;
-//     // var tbody = document.getElementById('tbody1');
-
-//     var trow = document.createElement('tr');
-//     var td1 = document.createElement('td');
-//     var td2 = document.createElement('td');
-//     var td3 = document.createElement('td');
-//     var td4 = document.createElement('td');
-//     var td5 = document.createElement('td');
-
-//     td1.innerHTML = ++contactno;
-//     td2.innerHTML = accountsitesearch;
-//     td3.innerHTML = phone;
-//     td4.innerHTML = email;
-//     td5.innerHTML = user2;
-
-//     trow.appendChild(td1);
-//     trow.appendChild(td2);
-//     trow.appendChild(td3);
-//     trow.appendChild(td4);
-//     trow.appendChild(td5);
-
-//     tbody.appendChild(trow);
-
-// }
-
-// function AddAllItrmsToTheTable(contactlist){
-//     // contactno=0;
-//     // var tbody = document.getElementById('tbody1');
-//     tbody.innerHTML="";
-//     contactlist.forEach(element => {
-//         AddItemToTable(element.accountsitesearch ,element.phone, element.email, element.user2, );
-//     })
-// }
-// window.onload = GetAllDataRealtime;
 
 function logout(){
     firebase.auth().signOut()
@@ -130,7 +148,8 @@ function signup2(){
     firebase.auth().onAuthStateChanged((user) => {
         if (user) {
             uid = user.uid;
-            const email = document.getElementById("email").value
+            email = user.email;
+            const email1 = document.getElementById("email1").value
             const salutation = document.getElementById("salutation").value
             const fname = document.getElementById("fname").value
             const mname = document.getElementById("mname").value
@@ -151,7 +170,8 @@ function signup2(){
             const malingcountry = document.getElementById("malingcountry").value
             db.collection("Application").doc(user.uid).collection("ORG").doc(create_UUID()).set({
                 uid: uid,
-                email: email,
+                email : email,
+                email1: email1,
                 salutation: salutation,
                 fname: fname,
                 mname: mname,
@@ -200,6 +220,7 @@ function signup3(){
     firebase.auth().onAuthStateChanged((user) => {
         if (user) {
             uid = user.uid;
+            email = user.email;
             // New Account
             const accountsitesearch1 = document.getElementById("accountsitesearch1").value
             const type1 = document.getElementById("type1").value
@@ -222,6 +243,7 @@ function signup3(){
             const ShippingCountry = document.getElementById("ShippingCountry").value
             db.collection("Application").doc(user.uid).collection("Account").doc(create_UUID()).set({                // New Account
                 uid: uid,
+                email : email,
                 accountsitesearch1: accountsitesearch1,
                 type1: type1,
                 Parentsitesearch: Parentsitesearch,
@@ -261,3 +283,57 @@ function signup3(){
       });
 }
 
+// view contact 
+
+function AddAllItemsToTheTable(serialnumber, id, data){
+    // console.log("function call",id);
+    // console.log("function call",serialnumber);
+    // console.log("function call",data);
+
+    var trow = document.createElement('tr');
+    var td1 = document.createElement('td');
+    var td2 = document.createElement('td');
+    var td3 = document.createElement('td');
+    var td4 = document.createElement('td');
+    var td5 = document.createElement('td');
+
+    td1.innerHTML = serialnumber;
+    td2.innerHTML = data.accountsitesearch;
+    td3.innerHTML = data.phone;
+    td4.innerHTML = data.email1;
+    td5.innerHTML = data.email;
+
+    tbody1.appendChild(trow);
+    trow.appendChild(td1);
+    trow.appendChild(td2);
+    trow.appendChild(td3);
+    trow.appendChild(td4);
+    trow.appendChild(td5);
+
+}
+
+// view account 
+
+function AddAllItemsToTheTable2(serialnumber, id, data){
+    // console.log("function call",id);
+    // console.log("function call",serialnumber);
+    // console.log("function call",data);
+
+    var trow = document.createElement('tr');
+    var td1 = document.createElement('td');
+    var td2 = document.createElement('td');
+    var td3 = document.createElement('td');
+    var td4 = document.createElement('td');
+
+    td1.innerHTML = serialnumber;
+    td2.innerHTML = data.accountsitesearch1;
+    td3.innerHTML = data.phone1;
+    td4.innerHTML = data.email;
+
+    tbody2.appendChild(trow);
+    trow.appendChild(td1);
+    trow.appendChild(td2);
+    trow.appendChild(td3);
+    trow.appendChild(td4);
+
+}
